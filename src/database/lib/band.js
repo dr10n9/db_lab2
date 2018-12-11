@@ -1,25 +1,55 @@
-'use strict'
+const model = require('../../models').Band;
 
-module.exports = function (sequelize, DataTypes) {
-    let Band = sequelize.define('Band', {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        name: {
-            type: DataTypes.STRING
-        },
-        genre: {
-            type: DataTypes.STRING
-        }
-    });
-
-    Band.associate = (models) => {
-        models.Band.hasMany(models.Album)
+class Band{
+    constructor(){
+        this.model = model;
     }
 
-    return Band;
+    async create(band){
+        return await this.model.create(band)
+            .then(data => {
+                return data;
+            })
+            .catch(err => {
+                return err;
+            });
+    }
+    async update(id, newBand){
+        return await this.model.update(newBand, {where: {id: id}})
+            .then(data => {
+                return data;
+            })
+            .catch(err => {
+                return err;
+            })
+    }
+    async get(id){
+        return await this.model.find({where: {id: id}})
+            .then(data => {
+                return data;
+            })
+            .catch(err => {
+                return err;
+            })
+    }
+    async getAll(){
+        return await this.model.findAll()
+            .then(data => {
+                return data;
+            })
+            .catch(err => {
+                return err;
+            })
+    }
+    async delete(id){
+        return await this.model.delete({where: {id: id}})
+            .then(data => {
+                return data;
+            })
+            .catch(err => {
+                return err;
+            })
+    }
 }
 
-
+module.exports.BandDatabaseController = Band;
