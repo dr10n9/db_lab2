@@ -1,0 +1,58 @@
+<head>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"/> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script defer src="https://unpkg.com/vue"></script>
+    <script defer src="../scripts/index.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+            <button v-on:click="getAlbums">get albumss</button>
+            <button v-on:click="getBands">get bandss</button>
+            <button v-on:click="getTracks">get trackss</button>
+
+            <table class="albums table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>BandId</th>
+                <th>TracksCount</th>
+            </tr>
+            <tr v-for="(album) in albums">
+                <td>{{album.id}}</td>
+                <td>{{album.name}}</td>
+                <td>{{album.BandId}}</td>
+                <td>{{album.tracksCount}}</td>
+            </tr>
+        </table>
+        <table class="bands table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            <tr v-for="(band) in bands">
+                <td>{{band.id}}</td>
+                <td>{{band.name}}</td>
+            </tr>
+        </table>
+        <table class="tracks table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Namd</th>
+                <th>Length</th>
+                <th>AlbumId</th>
+            </tr>
+            <tr v-for="(track) in tracks">
+                <td>{{track.id}}</td>
+                <td>{{track.name}}</td>
+                <td>{{track.length}}</td>
+                <td>{{track.AlbumId}}</td>
+            </tr>
+        </table>
+    </div>
+</body>

@@ -19,5 +19,6 @@ module.exports = function (sequelize, DataTypes) {
         models.Band.hasMany(models.Album)
     }
 
+
     return Band;
 }

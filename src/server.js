@@ -1,6 +1,5 @@
 const express = require('express');
 const routers = require('./routes');
-const models = require('./database');
 const bodyParser = require('body-parser');
 
 const albumsRouter = routers.AlbumsRouter;
@@ -18,6 +17,8 @@ class Server {
         this.app.use('/albums', albumsRouter)
         this.app.use('/bands', bandsRouter)
         this.app.use('/tracks', tracksRouter);
+        this.app.use('/scripts', express.static(__dirname + '/scripts'));
+        this.root = __dirname;
     }
 }
 
